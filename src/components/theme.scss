@@ -1,0 +1,81 @@
+// Custom theming for image editor
+// Change depending on your design language
+
+// We chose css variable approach to theming rather than
+// css in js. If you want to use css in js look into the
+// fluent theming:
+// https://developer.microsoft.com/en-us/fluentui#/styles/web/colors/theme-slots
+
+:global {
+    .light-theme {
+        --canvasBackground: #d0d8e7;
+        --canvasDropShadow: #b5c1d3;
+        --toolbarColor: #f3f3f3;
+        --toolButtonColor: white;
+        --buttonBorder: transparent;
+        --buttonTextColor: #323130;
+        --buttonBorderActive: black;
+        --optionPaneBackground: #f5f6f7;
+        --textColor: #323130;
+    }
+
+    .light-theme-office {
+        --canvasBackground: #d0d8e7;
+        --canvasDropShadow: #b5c1d3;
+        --toolbarColor: #f3f3f3;
+        --toolButtonColor: white;
+        --buttonBorder: transparent;
+        --buttonTextColor: #323130;
+        --buttonBorderActive: #d83b01;
+        --optionPaneBackground: #f5f6f7;
+        --textColor: #323130;
+    }
+
+    .light-theme-teams {
+        --canvasBackground: #d0d8e7;
+        --canvasDropShadow: #b5c1d3;
+        --toolbarColor: #f3f3f3;
+        --toolButtonColor: white;
+        --buttonBorder: transparent;
+        --buttonTextColor: #323130;
+        --buttonBorderActive: #464eb8;
+        --optionPaneBackground: #f5f6f7;
+        --textColor: #323130;
+    }
+
+    .light-theme-outlook {
+        --canvasBackground: #d0d8e7;
+        --canvasDropShadow: #b5c1d3;
+        --toolbarColor: #f3f3f3;
+        --toolButtonColor: white;
+        --buttonBorder: transparent;
+        --buttonTextColor: #323130;
+        --buttonBorderActive: #0078d4;
+        --optionPaneBackground: #f5f6f7;
+        --textColor: #323130;
+    }
+
+    .dark-theme {
+        --canvasBackground: #1f1f1f;
+        --canvasDropShadow: #1a1a1a;
+        --toolbarColor: #1b1a19;
+        --toolButtonColor: #323130;
+        --buttonBorder: transparent;
+        --buttonTextColor: white;
+        --buttonBorderActive: white;
+        --optionPaneBackground: #282828;
+        --textColor: white;
+    }
+
+    .high-contrast-theme {
+        --canvasBackground: black;
+        --canvasDropShadow: black;
+        --toolbarColor: black;
+        --toolButtonColor: black;
+        --buttonBorder: white;
+        --buttonTextColor: white;
+        --buttonBorderActive: #1aebff;
+        --optionPaneBackground: black;
+        --textColor: white;
+    }
+}
