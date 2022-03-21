@@ -1,69 +1,51 @@
-import React, { useCallback, useReducer } from 'react';
+import React, { ChangeEventHandler, useCallback, useReducer, useState } from 'react';
 
 import styles from './App.module.scss';
-import { BrushOptionPane } from './BrushOptionPane/BrushOptionPane';
-import { Canvas } from './Canvas/Canvas';
-import {
-    CanvasContext,
-    CanvasReducer,
-    initialCanvasState,
-} from './CanvasContext/CanvasContext';
-import { ColorPickerMenu } from './ColorPickerMenu/ColorPickerMenu';
-import { CopyLinkDialog } from './CopyLinkDialog/CopyLinkDialog';
-import {
-    DialogsContext,
-    DialogsReducer,
-    initialDialogsState,
-} from './DialogsContext/DialogsContext';
-import { OpenDialog } from './OpenDialog/OpenDialog';
-import { SaveDialog } from './SaveDialog/SaveDialog';
-import { Toolbar } from './Toolbar/Toolbar';
 
 // Main entrypoint to paint app
 // Initialize all app state/contexts here
 export const App = (): JSX.Element => {
-    // States relating to paint canvas functionality
-    const [canvasState, canvasDispatch] = useReducer(
-        CanvasReducer,
-        initialCanvasState,
-    );
-    // States relating to dialog/menu visibilities
-    const [dialogsState, dialogsDispatch] = useReducer(
-        DialogsReducer,
-        initialDialogsState,
-    );
+    const [translation, setTranslation] = useState('');
 
-    const dismissMenus = useCallback(
-        (_event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-            dialogsDispatch({ type: 'dismissAll' });
-        },
-        [],
-    );
+    function handleTranslate(value) {
+        setTranslation(value);
+    }
 
     return (
-        <DialogsContext.Provider
-            value={{ state: dialogsState, dispatch: dialogsDispatch }}
-        >
-            <CanvasContext.Provider
-                value={{ state: canvasState, dispatch: canvasDispatch }}
-            >
-                <div className={styles.app}>
-                    <OpenDialog isVisible={dialogsState.isOpenDialogVisible} />
-                    <SaveDialog isVisible={dialogsState.isSaveDialogVisible} />
-                    <Toolbar />
-                    <BrushOptionPane />
-                    <ColorPickerMenu
-                        isVisible={dialogsState.isColorPickerCalloutVisible}
-                    />
-                    <CopyLinkDialog
-                        isVisible={dialogsState.isCopyLinkDialogVisible}
-                    />
-                    <div onMouseDown={dismissMenus}>
-                        <Canvas />
-                    </div>
-                </div>
-            </CanvasContext.Provider>
-        </DialogsContext.Provider>
+        <div>
+            <h1>Translation App</h1>
+
+            <select name="sourceLang">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="cn">Chinese</option>
+            </select>
+            <br></br>
+            <input
+                type="textarea"
+                placeholder="Enter Text"
+                name="EnterText"
+                style={{ height: '300px', width: '600px' }}
+                onChange={(e) => handleTranslate(e.target.value)}
+            />
+            <br />
+            <br></br>
+            <select name="targetLang">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="cn">Chinese</option>
+            </select>
+            <br></br>
+            <input
+                readOnly
+                type="textarea"
+                placeholder="Translation"
+                name="Translation"
+                id="Translation"
+                value={translation}
+                style={{ height: '300px', width: '600px' }}
+            />
+        </div>
     );
 };
 
