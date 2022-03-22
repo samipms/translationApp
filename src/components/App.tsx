@@ -17,8 +17,6 @@ export const App = (): JSX.Element => {
             '&to=' +
             toLang;
 
-        console.log(url);
-        console.log(JSON.stringify(data));
         fetch(url, {
             method: 'POST',
             headers: {
