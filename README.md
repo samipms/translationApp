@@ -1,9 +1,8 @@
-# Image Editor
+# Translation App
 
 [![Build Status](https://office.visualstudio.com/OC/_apis/build/status/m365-extensibility-image-editor%20PR?branchName=main-internal)](https://office.visualstudio.com/OC/_build/latest?definitionId=18179&branchName=main-internal)
 
-Image Editor is a web app built within the MetaOS platform. It allows users to edit, save, open, and
-save images.
+Translation App is a web app built within the MetaOS platform. It allows users to translate from a soruce language to a target language. The backend is hooked up to Azure Portal Translation Service. 
 
 ![Alt Text](./demo.gif)
 
