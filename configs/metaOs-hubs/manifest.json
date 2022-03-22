@@ -27,8 +27,8 @@
         {
             "entityId": "MetaOS TranslationApp",
             "name": "MetaOS TranslationApp",
-            "contentUrl": "https://localhost:8080",
-            "websiteUrl": "https://localhost:8080",
+            "contentUrl": "https://translationappacct.z22.web.core.windows.net/",
+            "websiteUrl": "https://translationappacct.z22.web.core.windows.net/",
             "scopes": ["personal"]
         }
     ],
