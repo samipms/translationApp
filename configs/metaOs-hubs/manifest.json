@@ -15,18 +15,18 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "MetaOS Translator",
-        "full": "MetaOS Translator"
+        "short": "MetaOS TranslationApp",
+        "full": "MetaOS TranslationApp"
     },
     "description": {
-        "short": "Translator using MetaOS",
-        "full": "Translator using MetaOS"
+        "short": "TranslationApp using MetaOS",
+        "full": "TranslationApp using MetaOS"
     },
     "accentColor": "#FFFFFF",
     "staticTabs": [
         {
-            "entityId": "MetaOS Translator",
-            "name": "MetaOS Translator",
+            "entityId": "MetaOS TranslationApp",
+            "name": "MetaOS TranslationApp",
             "contentUrl": "https://localhost:8080",
             "websiteUrl": "https://localhost:8080",
             "scopes": ["personal"]
