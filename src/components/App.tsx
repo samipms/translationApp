@@ -17,6 +17,7 @@ export const App = (): JSX.Element => {
             fromLang +
             '&to=' +
             toLang;
+        console.log('uuu' + url);
         fetch(url, {
             method: 'POST',
             headers: {
@@ -45,6 +46,7 @@ export const App = (): JSX.Element => {
                 value={fromLang}
                 onChange={(e) => {
                     setFromLang(e.target.value);
+                    console.log('1111' + e.target.value);
                     handleTranslate();
                 }}
             >
@@ -94,6 +96,7 @@ export const App = (): JSX.Element => {
                 value={toLang}
                 onChange={(e) => {
                     setToLang(e.target.value);
+                    console.log('2222' + e.target.value);
                     handleTranslate();
                 }}
             >
