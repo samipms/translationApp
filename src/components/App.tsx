@@ -62,11 +62,8 @@ export const App = (): JSX.Element => {
         setTranslation(searchResult.translation);
     }
 
-    function handleRemove(searchResult: SearchResult) {
-        history.forEach((item, index) => {
-            if (item === searchResult) history.splice(index, 1);
-        });
-        setHistory(history);
+    function handleRemove(index: number) {
+        setHistory(history.filter((_item, i) => i != index));
     }
 
     const langOptions = [
@@ -245,10 +242,10 @@ export const App = (): JSX.Element => {
                         <span>
                             <b>Translation:</b> {searchResult.translation}
                         </span>
-                        <button onClick={(e) => handleUse(searchResult)}>
+                        <button onClick={() => handleUse(searchResult)}>
                             Use
                         </button>
-                        <button onClick={(e) => handleRemove(searchResult)}>
+                        <button onClick={() => handleRemove(index)}>
                             Remove
                         </button>
                     </li>
