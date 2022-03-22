@@ -5,12 +5,13 @@ import styles from './App.module.scss';
 // Main entrypoint to paint app
 // Initialize all app state/contexts here
 export const App = (): JSX.Element => {
+    const [enterText, setEnterText] = useState('');
     const [translation, setTranslation] = useState('');
     const [fromLang, setFromLang] = useState('en');
     const [toLang, setToLang] = useState('es');
 
-    function handleTranslate(value) {
-        const data = [{ text: value }];
+    function handleTranslate() {
+        const data = [{ text: enterText }];
         const url =
             'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=' +
             fromLang +
@@ -42,23 +43,35 @@ export const App = (): JSX.Element => {
 
             <select
                 name="fromLang"
-                onChange={(e) => setFromLang(e.target.value)}
+                onChange={(e) => {
+                    setFromLang(e.target.value);
+                    handleTranslate();
+                }}
             >
                 <option value="en">English</option>
                 <option value="es">Spanish</option>
                 <option value="cn">Chinese</option>
             </select>
             <br></br>
-            <input
-                type="textarea"
+            <textarea
                 placeholder="Enter Text"
                 name="EnterText"
+                value={enterText}
                 style={{ height: '300px', width: '600px' }}
-                onChange={(e) => handleTranslate(e.target.value)}
+                onChange={(e) => {
+                    setEnterText(e.target.value);
+                    handleTranslate();
+                }}
             />
             <br />
             <br></br>
-            <select name="toLang" onChange={(e) => setToLang(e.target.value)}>
+            <select
+                name="toLang"
+                onChange={(e) => {
+                    setToLang(e.target.value);
+                    handleTranslate();
+                }}
+            >
                 <option value="en">English</option>
                 <option selected value="es">
                     Spanish
@@ -66,12 +79,10 @@ export const App = (): JSX.Element => {
                 <option value="cn">Chinese</option>
             </select>
             <br></br>
-            <input
+            <textarea
                 readOnly
-                type="textarea"
                 placeholder="Translation"
                 name="Translation"
-                id="Translation"
                 value={translation}
                 style={{ height: '300px', width: '600px' }}
             />
