@@ -43,6 +43,7 @@ export const App = (): JSX.Element => {
 
             <select
                 name="fromLang"
+                value={fromLang}
                 onChange={(e) => {
                     setFromLang(e.target.value);
                     handleTranslate();
@@ -67,6 +68,7 @@ export const App = (): JSX.Element => {
             <br></br>
             <select
                 name="toLang"
+                value={toLang}
                 onChange={(e) => {
                     setToLang(e.target.value);
                     handleTranslate();
