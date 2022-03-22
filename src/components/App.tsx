@@ -96,7 +96,7 @@ export const App = (): JSX.Element => {
         { id: 24, value: 'et', name: 'Estonian' },
         { id: 25, value: 'fj', name: 'Fijian' },
         { id: 26, value: 'fil', name: 'Filipino' },
-        { id: 26, value: 'fi', name: 'Finnish' },
+        { id: 27, value: 'fi', name: 'Finnish' },
         { id: 28, value: 'fr', name: 'French' },
         { id: 29, value: 'ka', name: 'Georgian' },
         { id: 30, value: 'de', name: 'German' },
