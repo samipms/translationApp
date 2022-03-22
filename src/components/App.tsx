@@ -73,9 +73,7 @@ export const App = (): JSX.Element => {
                 }}
             >
                 <option value="en">English</option>
-                <option selected value="es">
-                    Spanish
-                </option>
+                <option value="es">Spanish</option>
                 <option value="cn">Chinese</option>
             </select>
             <br></br>
