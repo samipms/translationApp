@@ -3,6 +3,13 @@ import React, { ChangeEventHandler, useCallback, useReducer, useState } from 're
 
 import styles from './App.module.scss';
 
+export interface SearchResult {
+    fromLang: string;
+    toLang: string;
+    enterText: string;
+    translation: string;
+}
+
 // Main entrypoint to paint app
 // Initialize all app state/contexts here
 export const App = (): JSX.Element => {
@@ -10,6 +17,7 @@ export const App = (): JSX.Element => {
     const [translation, setTranslation] = useState('');
     const [fromLang, setFromLang] = useState('en');
     const [toLang, setToLang] = useState('es');
+    const [history, setHistory] = useState([]);
 
     function handleTranslate() {
         const data = [{ text: enterText }];
@@ -35,6 +43,30 @@ export const App = (): JSX.Element => {
             .catch((error) => {
                 console.error('Error:', error);
             });
+    }
+
+    function handleSave() {
+        const searchResult: SearchResult = {
+            fromLang: fromLang,
+            toLang: toLang,
+            enterText: enterText,
+            translation: translation,
+        };
+        setHistory((oldHistory) => [...oldHistory, searchResult]);
+    }
+
+    function handleUse(searchResult: SearchResult) {
+        setFromLang(searchResult.fromLang);
+        setToLang(searchResult.toLang);
+        setEnterText(searchResult.enterText);
+        setTranslation(searchResult.translation);
+    }
+
+    function handleRemove(searchResult: SearchResult) {
+        history.forEach((item, index) => {
+            if (item === searchResult) history.splice(index, 1);
+        });
+        setHistory(history);
     }
 
     const langOptions = [
@@ -192,6 +224,36 @@ export const App = (): JSX.Element => {
                 value={translation}
                 style={{ height: '300px', width: '600px' }}
             />
+            <br></br>
+            <button name="save" onClick={handleSave}>
+                Save
+            </button>
+            <br></br>
+            <ul>
+                {history.map((searchResult, index) => (
+                    // Setting "index" as key because name and age can be repeated, It will be better if you assign uniqe id as key
+                    <li key={index}>
+                        <span>
+                            <b>From:</b> {searchResult.fromLang}
+                        </span>{' '}
+                        <span>
+                            <b>To:</b> {searchResult.toLang}
+                        </span>{' '}
+                        <span>
+                            <b>EnterText:</b> {searchResult.enterText}
+                        </span>{' '}
+                        <span>
+                            <b>Translation:</b> {searchResult.translation}
+                        </span>
+                        <button onClick={(e) => handleUse(searchResult)}>
+                            Use
+                        </button>
+                        <button onClick={(e) => handleRemove(searchResult)}>
+                            Remove
+                        </button>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
