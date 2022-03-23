@@ -39,6 +39,7 @@ export const App = (): JSX.Element => {
             .then((data) => {
                 console.log('Success:', JSON.stringify(data[0]));
                 setTranslation(data[0].translations[0].text);
+                navigator.clipboard.writeText(data[0].translations[0].text);
             })
             .catch((error) => {
                 console.error('Error:', error);
