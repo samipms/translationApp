@@ -19,8 +19,22 @@ export const App = (): JSX.Element => {
     const [toLang, setToLang] = useState('es');
     const [history, setHistory] = useState([]);
 
-    function handleTranslate() {
-        const data = [{ text: enterText }];
+    window.addEventListener('focus', () => {
+        navigator.clipboard
+            .readText()
+            .then((text) => {
+                if (text !== '' && text !== enterText && text != translation) {
+                    setEnterText(text);
+                    handleTranslate(text);
+                }
+            })
+            .catch((err) => {
+                console.log('Failed to read from clipboard', err);
+            });
+    });
+
+    function handleTranslate(input: string | undefined) {
+        const data = input ? [{ text: input }] : [{ text: enterText }];
         const url =
             'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=' +
             fromLang +
@@ -178,7 +192,7 @@ export const App = (): JSX.Element => {
                 value={fromLang}
                 onChange={(e) => {
                     setFromLang(e.target.value);
-                    handleTranslate();
+                    handleTranslate(undefined);
                 }}
             >
                 {langOptions.map((lang) => (
@@ -195,7 +209,7 @@ export const App = (): JSX.Element => {
                 style={{ height: '300px', width: '600px' }}
                 onChange={(e) => {
                     setEnterText(e.target.value);
-                    handleTranslate();
+                    handleTranslate(undefined);
                 }}
             />
             <br />
@@ -205,7 +219,7 @@ export const App = (): JSX.Element => {
                 value={toLang}
                 onChange={(e) => {
                     setToLang(e.target.value);
-                    handleTranslate();
+                    handleTranslate(undefined);
                 }}
             >
                 {langOptions.map((lang) => (
