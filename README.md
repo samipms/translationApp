@@ -49,7 +49,9 @@ To do this
     4. go to https://dev.teams.microsoft.com/apps and click **Import App** to upload the .zip file.
     5. go to the new app's entry, click **preview app**, and after teams has loaded, click add.
 
-![image](https://user-images.githubusercontent.com/16567053/156258932-df36b263-f7e9-4d45-84c1-0698da9c32ee.png)
+![image](teamsDevPortal.jpg)
+
+![image](teamsDevPortal2.jpg)
 
 Now it should be available on all hubs.  
 **Access app on Teams**  
