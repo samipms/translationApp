@@ -53,14 +53,14 @@ To do this
 
 Now it should be available on all hubs.  
 **Access app on Teams**  
-![image](https://user-images.githubusercontent.com/16567053/156259447-76d99f85-d434-4c14-b898-7371e1d5f794.png)
+![image](teams.jpg)
 
 **Access app on Office**  
 https://www.office.com/m365apps  
-![image](https://user-images.githubusercontent.com/16567053/156259558-11decda3-d32e-4a7c-8f97-be62e520cf8d.png)
+![image](office.jpg)
 
 **Access app on Outlook**  
-![image](https://user-images.githubusercontent.com/16567053/156259674-753be416-f213-4ab9-aa95-8d672efc32e4.png)
+![image](outlook.jpg)
 
 ### Build production
 
